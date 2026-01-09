@@ -1,0 +1,10 @@
+#Pixell-River-Logo {
+    height: 150px;
+    width: 150px;
+}
+
+header {
+    gap: 50px;
+    display: flex;
+    align-items: center;
+}
