@@ -112,4 +112,4 @@ Department.forEach(employee => {
 })
 
 // Date for copyright
-footer.append(current)
+footer.append(currentYear)
