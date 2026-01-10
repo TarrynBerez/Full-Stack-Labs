@@ -1,3 +1,4 @@
+// Array of Department and Employees
 const Department = [
   {
     name: "Executive",
@@ -70,12 +71,15 @@ const Department = [
   },
 ];
 
+// Declarations 
 const employeeList = document.getElementById("employees");
 const footer = document.getElementById("footer")
 const date = new Date()
 const currentYear = date.getFullYear()
 
+// List loop
 Department.forEach(employee => {
+    // Title
     const title = document.createElement("li")
     title.textContent = employee.name
     title.style.fontWeight = "bold";
@@ -83,6 +87,7 @@ Department.forEach(employee => {
     title.style.marginTop = "20px";
     employeeList.appendChild(title)
 
+        // Employee list
         employee.employees.forEach(employee => {
             const li = document.createElement("li");
             li.textContent = employee
@@ -91,4 +96,5 @@ Department.forEach(employee => {
     })
 })
 
+// Date for copyright
 footer.append(current)
