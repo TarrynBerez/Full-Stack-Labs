@@ -69,6 +69,21 @@ const Department = [
       "Jim Wingnut"
     ]
   },
+  {
+    name: "IT Technician",
+    employees: [
+      "Aiyana Littlebear",
+      "Inara Thunderbird",
+      "Kaya Runningbrook",
+      "Elara Firehawk",
+      "Siona Moonflower",
+      "Kaiyu Greywolf",
+      "Ayawamat Nightwind",
+      "Tala Braveheart",
+      "Iniko Stonebear",
+      "Onatah Redhawk"
+    ]
+  }
 ];
 
 // Declarations 
