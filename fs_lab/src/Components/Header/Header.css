@@ -1,0 +1,15 @@
+header {
+    position: static;
+    right: 0;
+    top: 0;
+
+    width: 100%;
+    text-align: center;
+}
+
+#Title {
+    color: rgb(43, 57, 144);
+    font-size:x-large;
+
+    font-family: sans-serif;
+}
