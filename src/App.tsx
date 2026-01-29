@@ -1,84 +1,144 @@
 import './App.css'
-import { useState } from 'react'
+
+import { use, useState } from 'react'
+import { Routes, Route} from "react-router-dom"
+
 import EmployeeList from './Components/EmployeeList/EmployeeList'
 import Footer from './Components/Footer/Footer'
 import Header from './Components/Header/Header'
 import Form from './Components/Form/Form'
+import Navbar from './Components/Navbar/Navbar'
+import Organizations from './Components/Organization/Organization'
+
+
 
 export type Department = {
   name: string,
   employees: string[]
 }
 
+export type Organization = {
+  role: string,
+  name: string
+}
+
+const organizationList = [
+  { role: "CEO/Chair of Board", name: "Jo-Anne Sinclair" },
+  { role: "COO/VP Operations", name: "Jackson Smith" },
+  { role: "CFO/VP Administration", name: "Susan Thomas" },
+  { role: "VP Client Services", name: "Richa Kaur" },
+  { role: "CIO", name: "Josee Benjamin" },
+  { role: "VP Sales & Marketing", name: "Vincent Grey" },
+  { role: "Director Financial and Audit Svcs", name: "Rupa Kharki (she/her/hers)" },
+  { role: "Director Human Resources", name: "Xun Kuang" },
+  { role: "Director Legal Services/General Counsel", name: "Stien Pedersen" },
+  { role: "Director Information Technology", name: "Sandra Bear" },
+  { role: "Director Information Security and CISSO", name: "Gus Blue" },
+  { role: "Director Accounting", name: "Sam Kong" },
+  { role: "Director Physical Security", name: "Valentine Smith" },
+  { role: "Director Facilities", name: "Mariya Kaperski" },
+  { role: "Manager, Business Continuity and Disaster Recovery", name: "Abd al-Hamid Alami" },
+  { role: "Manager, Internal Audit", name: "Victoria Gray" },
+  { role: "Chief Architect", name: "Cheryl Guru" },
+  { role: "Manager, Security Architecture", name: "Jean Ngoy" },
+  { role: "Solution Architect, Online Banking", name: "Kris Gold" },
+  { role: "Manager, Application Solutions", name: "Isaac Smith" },
+  { role: "Lead Developer, Online Banking", name: "Payton Frost" },
+  { role: "Manager, Operational Risk", name: "Samantha Nettle" },
+  { role: "Manager, Vendor Relations", name: "Yolanda Ferreira" },
+  { role: "Manager, Purchasing", name: "Samir Hassan" },
+  { role: "Manager, Communications", name: "Yuna Aikawa" },
+  { role: "Manager Customer Experience and Community Eng.", name: "Jonathan Carberry" },
+  { role: "Manager of Sales", name: "Roland Wei" },
+  { role: "Manager, Marketing", name: "Pran Singh" },
+  { role: "Business Analyst, Online Banking", name: "Linda Analyst" },
+  { role: "Manager, Contract Management", name: "Esra Sedge" },
+  { role: "Manager, Compliance Management", name: "Pranee Tan" },
+  { role: "Manager IT End User Service Desk", name: "Karmen Spruce" },
+  { role: "Manager IT End User Computing", name: "Haydar Katirci" },
+  { role: "Manager IT Telecom and Infrastructure", name: "Jill Harkness" },
+  { role: "Manager, Data Center and Hosting Services", name: "Tim Morrison" },
+  { role: "Manager of IT Risk Management", name: "Aleksandr Milosevic" },
+  { role: "Manager IT, project management office", name: "Jim Wingnut" }
+]
+
+
 // Array of Department and Employees
 const DepartmentList = [
   {
-    name: "Executive",
+    name: "Administration",
     employees: [
-      "Jo-Anne Sinclair",
-      "Jackson Smith",
-      "Susan Thomas",
-      "Richa Kaur",
-      "Josee Benjamin",
-      "Vincent Grey"
+      "Zoë Robins",
+      "Madeleine Madden"
     ]
   },
   {
-    name: "Finance & Audit",
+    name: "Audit",
     employees: [
-      "Rupa Kharki",
-      "Sam Kong",
-      "Victoria Gray"
+      "Josha Sadowski",
+      "Kate Fleetwood"
+    ]
+  },
+  {
+    name: "Banking Operations",
+    employees: [
+      "Priyanka Bose",
+      "Hammed Animashaun",
+      "Álvaro Morte",
+      "Taylor Napier",
+      "Alan Simmonds"
+    ]
+  },
+  {
+    name: "Communications",
+    employees: [
+      "Gil Cardinal",
+      "Richard J. Lewis"
+    ]
+  },
+  {
+    name: "Corporate Services",
+    employees: [
+      "Randy Bradshaw",
+      "Tracey Cook",
+      "Lubomir Mykytiuk"
+    ]
+  },
+  {
+    name: "Facilities",
+    employees: [
+      "Dakota House",
+      "Lori Lea Okemah",
+      "Renae Morrisseau",
+      "Rick Belcourt"
+    ]
+  },
+  {
+    name: "Financial Services",
+    employees: [
+      "Selina Hanusa",
+      "Buffy Gaudry",
+      "Shaneen Ann Fox",
+      "Allan Little",
+      "Danny Rabbit"
     ]
   },
   {
     name: "Human Resources",
     employees: [
-      "Xun Kuang"
-    ]
-  },
-  {
-    name: "Legal",
-    employees: [
-      "Stien Pedersen"
+      "Jesse Ed Azure",
+      "Stacy Da Silva",
+      "Vladimír Valenta",
+      "Samone Sayeses-Whitney",
+      "Paul Coeur"
     ]
   },
   {
     name: "Information Technology",
     employees: [
-      "Sandra Bear",
-      "Gus Blue",
-      "Cheryl Guru",
-      "Jean Ngoy",
-      "Kris Gold",
-      "Isaac Smith",
-      "Payton Frost"
-    ]
-  },
-  {
-    name: "Operations",
-    employees: [
-      "Samantha Nettle",
-      "Yolanda Ferreira",
-      "Samir Hassan",
-      "Yuna Aikawa",
-      "Jonathan Carberry",
-      "Roland Wei",
-      "Pran Singh",
-      "Linda Analyst",
-      "Esra Sedge",
-      "Pranee Tan"
-    ]
-  },
-  {
-    name: "IT",
-    employees: [
-      "Karmen Spruce",
-      "Haydar Katirci",
-      "Jill Harkness",
-      "Tim Morrison",
-      "Aleksandr Milosevic",
-      "Jim Wingnut"
+      "Graham Greene",
+      "Sandika Evergreen",
+      "Jennifer Rodriguez (Software Developer)"
     ]
   },
   {
@@ -96,16 +156,26 @@ const DepartmentList = [
       "Onatah Redhawk"
     ]
   }
-];
+]
 
 function App() {
   const [departments, setDepartments] = useState<Department[]>(DepartmentList)
+  const [organizations, setOrganizations] = useState<Organization[]>(organizationList)
 
   return (
     <>
       <Header/>
-      <Form departments={departments} setDepartments={setDepartments}/>
-      <EmployeeList departments={departments}/>
+      <Navbar/>
+        <Routes>
+            <Route path='/employees' element={
+              <>
+                <Form departments={departments} setDepartments={setDepartments}/>
+                <EmployeeList departments={departments}/>
+              </>
+              }>
+            </Route>
+            <Route  path='/organizations' element={<Organizations organizations={organizations}/>}> </Route>
+        </Routes>
       <Footer/>
     </>
   )
