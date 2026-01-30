@@ -1,0 +1,22 @@
+nav {
+    background-color: #3B3B3B;
+    padding: 10px;
+    border: 1px;
+    border-radius: 8px;
+    
+
+}
+
+.nav-link {
+        margin-right: 20px;
+        margin-left: 20px;
+        color: white;
+}
+
+.nav-div {
+    display: flex;
+    align-content: center;
+
+    margin-left: 40px;
+    margin-bottom: 50px;
+}

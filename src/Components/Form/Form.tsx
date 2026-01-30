@@ -1,5 +1,5 @@
 import "./Form.css"
-import type {Department} from "../../App"
+import type {Department} from "../../Types/Department"
 
 
 function Form({
@@ -42,13 +42,15 @@ function Form({
     <form method="post" onSubmit={addEmployee}>
         <input placeholder="Full Name" type="text" name="name" minLength={3} required/>
         <select name="department">
-            <option value="Executive">Executive</option>
-            <option value="Finance & Audit">Finance & Audit</option>
+            <option value="Administration">Administration</option>
+            <option value="Audit">Audit</option>
+            <option value="Banking Operations">Banking Operations</option>
+            <option value="Communications">Communications</option>
+            <option value="Corporate Services">Corporate Services</option>
+            <option value="Facilities">Facilities</option>
+            <option value="Financial Services">Financial Services</option>
             <option value="Human Resources">Human Resources</option>
-            <option value="Legal">Legal</option>
             <option value="Information Technology">Information Technology</option>
-            <option value="Operations">Operations</option>
-            <option value="IT">IT</option>
             <option value="IT Technician">IT Technician</option>
         </select>
         <button type="submit">Submit</button>

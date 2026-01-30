@@ -1,0 +1,13 @@
+.organization-titles {
+    list-style: none;
+    font-weight: 700;
+    margin-top: 20px;
+}
+
+.organization-list {
+    margin-left: 20px;
+}
+
+div {
+    font-family: system-ui;
+}
