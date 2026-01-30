@@ -1,5 +1,5 @@
 import "./Form.css"
-import type {Department} from "../../App"
+import type {Department} from "../../Types/Department"
 
 
 function Form({
