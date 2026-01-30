@@ -1,5 +1,5 @@
 import "./Organization.css"
-import type { Organization } from "../../App";
+import type { Organization } from "../../Types/Organization";
 
 
 function OrganizationList({ organizations }: { organizations: Organization[] }) {
