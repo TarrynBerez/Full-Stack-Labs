@@ -25,7 +25,7 @@ import Organizations from './Components/Organization/Organization'
 
 function App() {
   const [departments, setDepartments] = useState<Department[]>(DepartmentList)
-  const [organizations, setOrganizations] = useState<Organization[]>(organizationList)
+  const [organizations] = useState<Organization[]>(organizationList)
 
   return (
     <>
