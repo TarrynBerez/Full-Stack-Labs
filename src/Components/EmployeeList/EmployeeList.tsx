@@ -1,8 +1,12 @@
 import "./EmployeeList.css"
+
 import type { Department } from "../../Types/Department";
 
+type EmployeeListProps = {
+    departments: Department[];
+};
 
-function EmployeeList( {departments}:{departments: Department[]} ) {
+function EmployeeList({ departments }: EmployeeListProps) {
     return(
     <ul id="employees">
 
