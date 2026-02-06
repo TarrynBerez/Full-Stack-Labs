@@ -8,26 +8,20 @@ export function useFormInput() {
 
     function createEmployee(employeeName: string, departmentName: string) {
 
-        
+        const newDepartments = departments.some(d => d.name === departmentName)
+            ? departments.map(d => 
+                d.name === departmentName 
+                    ? {...d, employees: [...d.employees, employeeName]} 
+                    : d
+            ): [
+                ...departments, 
+                {name: departmentName, employees: [employeeName]}
+            ];
 
-        setDepartments(prev => {
-            const exists = prev.some(d => d.name === departmentName)
+        setDepartments(newDepartments);
 
-            if (exists) {
-                return prev.map(d => d.name === departmentName ? 
-                    { ...d, employees: [...d.employees, employeeName] }: d
-                )
-            }
-
-            return [
-                ...prev,
-                {
-                name: departmentName,
-                employees: [employeeName]
-                }
-            ]
-            })
         employeeService.createEmployeeService(employeeName, departmentName)
-        }
+    }
+
     return {departments, createEmployee}
 }
