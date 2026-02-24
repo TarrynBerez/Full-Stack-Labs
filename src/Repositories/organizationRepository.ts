@@ -25,8 +25,6 @@ export function getOrganizationsByName(role: string): Organization {
 
 
 export function updateOrganization(role: string, newOrganization: { name: string; role: string } ) {  
-    //const organization = getOrganizationsByName(role) // Replace with service later!
-
     const index = organizationList.findIndex(o => o.role === role);
 
     if (index !== -1) {
@@ -35,5 +33,4 @@ export function updateOrganization(role: string, newOrganization: { name: string
         ...newOrganization
         };
     }
-    //return user; 
 }
