@@ -5,7 +5,7 @@ export function getAllDepartments(): Department[] {
     return DepartmentList
 }
 
-export async function createEmployee(departmentName : string, employeeName: string) {
+export async function createEmployee(departmentName: string, employeeName: string) {
     const foundDepartment = DepartmentList.find(d => d.name === departmentName);
 
     if(!foundDepartment) {
