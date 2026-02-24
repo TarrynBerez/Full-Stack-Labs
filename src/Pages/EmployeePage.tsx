@@ -9,7 +9,7 @@ function EmployeePage() {
         <Form createEmployee={createEmployee}/>
         <EmployeeList departments={departments}/>
     </>
-   );
+    );
 }
 
 export default EmployeePage;
