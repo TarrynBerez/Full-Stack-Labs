@@ -1,4 +1,3 @@
-
 // Components
 import OrganizationList from "../Components/Organization/Organization"
 import OrganizationForm from "../Components/OrganizationForm/OrganizationForm"

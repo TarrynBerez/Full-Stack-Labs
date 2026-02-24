@@ -1,5 +1,4 @@
 import "./OrganizationForm.css"
-//import * as organizationService from "../../Services/organizationService"
 
 type Hook = {
     saveOrganization: (name: string, role: string) => void;
