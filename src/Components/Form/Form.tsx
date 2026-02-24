@@ -1,14 +1,10 @@
 import "./Form.css"
-import type {Department} from "../../Types/Department"
 
+type FormProp = {
+    createEmployee: (employeeName: string, departmentName: string) => void;
+};
 
-function Form({
-    setDepartments
-}: {
-    departments:Department[]
-    setDepartments: React.Dispatch<React.SetStateAction<Department[]>>
-}){
-    
+function Form({createEmployee}: FormProp){
     function addEmployee(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault()
 
@@ -18,25 +14,8 @@ function Form({
         const employeeName = formData.get("name") as string
         const departmentName = formData.get("department") as string
 
-        setDepartments(prev => {
-            const exists = prev.some(d => d.name === departmentName)
-
-            if (exists) {
-                return prev.map(d => d.name === departmentName ? 
-                    { ...d, employees: [...d.employees, employeeName] }: d
-                )
-            }
-
-            return [
-                ...prev,
-                {
-                name: departmentName,
-                employees: [employeeName]
-                }
-            ]
-            })
-        }
-
+        createEmployee(employeeName, departmentName)
+    }
     return(
 
     <form method="post" onSubmit={addEmployee}>
