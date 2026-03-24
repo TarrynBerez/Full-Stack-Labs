@@ -1,7 +1,6 @@
 // CSS Imports
 import './App.css'
 
-// import { useState } from 'react'
 import { Routes, Route, Navigate} from "react-router-dom"
 
 // Component Imports
@@ -15,7 +14,6 @@ import EmployeePage from './Pages/EmployeePage'
 
 
 function App() {
-
 return (
 <>
   <Header/>

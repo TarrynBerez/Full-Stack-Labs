@@ -1,10 +1,11 @@
-import type { Department } from "@shared/types/Department";
-//import { DepartmentList } from "../Data/employees";
+import type { Employee } from "@shared/types/Employee";
+
 
 const BASE_URL = `${import.meta.env.VITE_API_BASE_URL}/api/v1`;
 const EMPLOYEE_ENDPOINT = "/employees"
 
-export async function getAllDepartments(): Promise<Department[]> {
+
+export async function getAllDepartments(): Promise<Employee[]> {
     const employeeResponse: Response = await fetch(
         `${BASE_URL}${EMPLOYEE_ENDPOINT}`
     );
@@ -16,6 +17,7 @@ export async function getAllDepartments(): Promise<Department[]> {
     const json = await employeeResponse.json();
     return json.employeeList;
 }
+
 
 export async function createEmployee(departmentName: string, employeeName: string) {
     if (!departmentName || !employeeName) {

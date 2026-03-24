@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import * as employeeService from "../services/employeeService"
 
+
 export const getAllEmployees = async (_req: Request, res : Response) => {
     try {
         const employees = await employeeService.getAllEmployeesService()
@@ -12,6 +13,7 @@ export const getAllEmployees = async (_req: Request, res : Response) => {
         })
     }
 }
+
 
 export const createEmployee = async (req: Request, res : Response) => {
     try {

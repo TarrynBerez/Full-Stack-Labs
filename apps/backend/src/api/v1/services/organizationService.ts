@@ -1,14 +1,15 @@
-import { organizationList } from "../Data/organizations"
+//import { organizationList } from "../Data/organizations"
 import { Organization } from "@shared/types/Organization"
+import prisma from "../../../../prisma/client"
 
 
 export async function AddOrganization( newOrganization : Organization) {
-    organizationList.push(newOrganization);
+    return prisma.organization.create({ data: newOrganization });
 }
 
 
 export async function getOrganizations(): Promise<Organization[]> {
-    return organizationList
+    return prisma.organization.findMany();
 }
 
 
@@ -24,17 +25,18 @@ export async function getOrganizationsByName(role: string): Promise<Organization
 }
 
 
-export async function updateOrganization(role: string, newOrganization: { name: string; role: string } ) {  
-    const organizationList = await getOrganizations()
-    const index = organizationList.findIndex(o => o.role === role);
-
-    if (index !== -1) {
-        organizationList[index] = {
-        ...organizationList[index],
-        ...newOrganization
-        };
+export async function updateOrganization(role: string, newOrganization: { name: string; role: string }) {  
+    await prisma.organization.updateMany({
+        where: {
+            role: role   
+        },
+        data: {
+            name: newOrganization.name,
+            role: newOrganization.role
+            }
+        })
     }
-}
+
 
 export async function updateOrAddOrganization(organizationData: { name: string; role: string }) {
     if (!organizationData.name || !organizationData.role) {
@@ -50,7 +52,6 @@ export async function updateOrAddOrganization(organizationData: { name: string; 
     if (!organizationList) {
         throw new Error("Error fetching employee list")
     }
-
     
     const roleExists = organizationList.some(r => r.role === organizationData.role);
     

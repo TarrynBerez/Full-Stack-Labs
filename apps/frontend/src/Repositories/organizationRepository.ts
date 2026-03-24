@@ -1,7 +1,9 @@
 import type { Organization } from "@shared/types/Organization";
 
+
 const BASE_URL = `${import.meta.env.VITE_API_BASE_URL}/api/v1`;
 const ORGANIZATION_ENDPOINT = "/organizations"
+
 
 export async function AddOrUpdateOrganization( newOrganization : Organization) {
     if (!newOrganization) {
@@ -24,6 +26,7 @@ export async function AddOrUpdateOrganization( newOrganization : Organization) {
     return json;
 }
 
+
 export async function getOrganizations(): Promise<Organization[]> {
     const organizationResponse: Response = await fetch(
         `${BASE_URL}${ORGANIZATION_ENDPOINT}`
@@ -36,6 +39,3 @@ export async function getOrganizations(): Promise<Organization[]> {
     const json = await organizationResponse.json();
     return json.organizationList;
 }
-
-
-
