@@ -6,7 +6,6 @@ import OrganizationForm from "../Components/OrganizationForm/OrganizationForm"
 import { useFormInput } from "../Hooks/departmentHook";
 
 
-
 function OrganizationPage() {
     const { organizations, saveOrganization } = useFormInput();
     

@@ -8,7 +8,6 @@ import * as organizationService from "../Services/organizationService"
 
 
 export function useFormInput() { 
-    // const DepartmentList = employeeService.fetchEmployees()  
     const [departments, setDepartments] = useState<Department[]>([])
     const [organizations, setOrganizations] = useState<Organization[]>([])
 
@@ -62,6 +61,7 @@ export function useFormInput() {
         );
     };
 
+
     async function saveOrganization(name: string, role: string) {
     setOrganizations(prev =>
         prev.some(o => o.role === role)
@@ -79,7 +79,6 @@ export function useFormInput() {
     return {organizations, 
             departments, 
             createEmployee, 
-            /*CreateOrganization,*/ 
             updateOrganization,
             saveOrganization}
 }
