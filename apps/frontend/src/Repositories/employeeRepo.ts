@@ -6,6 +6,7 @@ const EMPLOYEE_ENDPOINT = "/employees"
 
 
 export async function getAllDepartments(): Promise<Employee[]> {
+    console.log("BASE_URL:", BASE_URL);
     const employeeResponse: Response = await fetch(
         `${BASE_URL}${EMPLOYEE_ENDPOINT}`
     );
