@@ -1,15 +1,16 @@
 import { useFormInput } from "../Hooks/departmentHook";
 import Form from '../Components/Form/Form'
 import EmployeeList from '../Components/EmployeeList/EmployeeList'
-import { Show} from '@clerk/react'
+import { SignedIn } from "@clerk/clerk-react";
 
 function EmployeePage() {
     const {departments, createEmployee} = useFormInput()
     return(
     <>
-        <Show when="signed-in">
+        <SignedIn>
             <Form createEmployee={createEmployee}/>
-        </Show>
+        </SignedIn>
+        
         <EmployeeList departments={departments}/>
     </>
     );

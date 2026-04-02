@@ -1,19 +1,21 @@
 import "./Header.css"
 import Logo from "../../assets/Pixell-River-Logo.svg"
-import { Show, SignInButton, SignUpButton, UserButton } from '@clerk/react'
+import { SignedIn, SignedOut, SignInButton, SignUpButton, UserButton } from "@clerk/clerk-react";
 
 function Header() {
     
     return(
     <header>
         <img src={Logo} alt="Pixell River Logo" id="Pixell-River-Logo"/> <h1 id="Title">Pixell River Employee Directory</h1>
-        <Show when="signed-out">
+
+        <SignedOut>
             <SignInButton />
             <SignUpButton />
-        </Show>
-        <Show when="signed-in">
+        </SignedOut>
+        
+        <SignedIn>
             <UserButton />
-        </Show>
+        </SignedIn> 
     </header>);
 }
 

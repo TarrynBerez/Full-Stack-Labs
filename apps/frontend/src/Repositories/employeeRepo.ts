@@ -27,6 +27,7 @@ export async function createEmployee(departmentName: string, employeeName: strin
     if (!sessionToken) {
         throw new Error("Unauthorized")
     }
+
     const newEmployeeData = { department: departmentName, name: employeeName };
     
     const response: Response = await fetch(`${BASE_URL}${EMPLOYEE_ENDPOINT}/new`, {
