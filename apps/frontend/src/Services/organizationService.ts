@@ -2,7 +2,7 @@
 import { Organization } from "@shared/types/Organization";
 import * as organizationRepo from "../Repositories/organizationRepository"
 
-export async function addOrganizationService(role: string, name: string) {
+export async function addOrganizationService(role: string, name: string, sessionToken: string) {
     if (!name || !role) {
         throw new Error("Missing input")
     }
@@ -13,7 +13,7 @@ export async function addOrganizationService(role: string, name: string) {
 
     const newOrganization = {name: name, role: role}
 
-    await organizationRepo.AddOrUpdateOrganization(newOrganization)
+    await organizationRepo.AddOrUpdateOrganization(newOrganization, sessionToken)
 }
    
 

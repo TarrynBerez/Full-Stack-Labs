@@ -5,11 +5,13 @@ import type { Department } from "@shared/types/Department"
 import type { Organization } from "@shared/types/Organization"
 
 import * as organizationService from "../Services/organizationService"
+import { useAuth } from "@clerk/react";
 
 
 export function useFormInput() { 
     const [departments, setDepartments] = useState<Department[]>([])
     const [organizations, setOrganizations] = useState<Organization[]>([])
+    const { getToken, isSignedIn } = useAuth();
 
     useEffect(() => {
         const loadDepartments = async () => {
@@ -39,6 +41,14 @@ export function useFormInput() {
 
 
     async function createEmployee(employeeName: string, departmentName: string) {
+        let sessionToken = isSignedIn? await getToken() : null;
+
+        if (!sessionToken) {
+            throw new Error("Not Authorized")
+        } else {
+            await employeeService.createEmployeeService(employeeName, departmentName, sessionToken);
+        }
+
         const newDepartments = departments.some(d => d.name === departmentName)
             ? departments.map(d => 
                 d.name === departmentName 
@@ -50,9 +60,7 @@ export function useFormInput() {
             ];
 
         setDepartments(newDepartments);
-        await employeeService.createEmployeeService(employeeName, departmentName)
     };
-
     
 
     function updateOrganization(name: string, newRole: string) {
@@ -63,6 +71,14 @@ export function useFormInput() {
 
 
     async function saveOrganization(name: string, role: string) {
+    let sessionToken = isSignedIn? await getToken() : null;
+
+    if (!sessionToken) {
+        throw new Error("Not Authorized")
+    } else {
+        await organizationService.addOrganizationService(role, name, sessionToken);
+    }
+
     setOrganizations(prev =>
         prev.some(o => o.role === role)
             ? prev.map(o =>
@@ -73,7 +89,6 @@ export function useFormInput() {
                 { name, role }
               ]
         );
-        await organizationService.addOrganizationService(role, name)
     }
 
     return {organizations, 

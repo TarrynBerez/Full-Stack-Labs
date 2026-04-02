@@ -20,9 +20,9 @@ export async function fetchEmployees(): Promise<Department[]> {
 }
 
 
-export async function createEmployeeService(employeeName: string, departmentName: string): Promise<newEmployee[]> {
+export async function createEmployeeService(employeeName: string, departmentName: string, sessionToken: string): Promise<newEmployee[]> {
     if (!employeeName || employeeName.length < 3) {
         throw new Error("Employee name must be at least 3 characters.");
     }
-    return await employeeRepo.createEmployee(departmentName, employeeName);
+    return await employeeRepo.createEmployee(departmentName, employeeName, sessionToken);
 }

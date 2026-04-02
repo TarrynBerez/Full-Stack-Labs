@@ -5,9 +5,12 @@ const BASE_URL = `${import.meta.env.VITE_API_BASE_URL}/api/v1`;
 const ORGANIZATION_ENDPOINT = "/organizations"
 
 
-export async function AddOrUpdateOrganization( newOrganization : Organization) {
+export async function AddOrUpdateOrganization( newOrganization : Organization, sessionToken: string) {
     if (!newOrganization) {
         throw new Error("Unable to add organization due to missing inputs.")
+    }
+    if (!sessionToken) {
+        throw new Error("Unauthorized")
     }
 
     const response: Response = await fetch(`${BASE_URL}${ORGANIZATION_ENDPOINT}/new`, {
@@ -15,10 +18,11 @@ export async function AddOrUpdateOrganization( newOrganization : Organization) {
         body: JSON.stringify(newOrganization),
         headers: {
             "Content-Type": "application/json",
-        },
+            Authorization: `Bearer ${sessionToken}`
+        }
     });
 
-    if (!response) {
+    if (!response.ok) {
         throw new Error("Error retrieving data.")
     }
 

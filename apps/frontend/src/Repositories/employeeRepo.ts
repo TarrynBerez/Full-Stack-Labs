@@ -20,22 +20,25 @@ export async function getAllDepartments(): Promise<Employee[]> {
 }
 
 
-export async function createEmployee(departmentName: string, employeeName: string) {
+export async function createEmployee(departmentName: string, employeeName: string, sessionToken: string) {
     if (!departmentName || !employeeName) {
         throw new Error("Unable to add employee due to missing inputs.")
     }
-
+    if (!sessionToken) {
+        throw new Error("Unauthorized")
+    }
     const newEmployeeData = { department: departmentName, name: employeeName };
-
+    
     const response: Response = await fetch(`${BASE_URL}${EMPLOYEE_ENDPOINT}/new`, {
         method: "POST",
         body: JSON.stringify(newEmployeeData),
         headers: {
             "Content-Type": "application/json",
-        },
+            Authorization: `Bearer ${sessionToken}`
+        }
     });
 
-    if (!response) {
+    if (!response.ok) {
         throw new Error("Error retrieving data.")
     }
 
