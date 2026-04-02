@@ -1,10 +1,14 @@
 {
-   "relatedProjects": ["prj_j3RTN9NskJO93rZXkeZ9aZdu0aRP"],
+    "relatedProjects": ["prj_j3RTN9NskJO93rZXkeZ9aZdu0aRP"],
 
-   "git": {
-     "deploymentEnabled": {
-         "*": false,
-         "main": true
-     }
- }
+    "git": {
+        "deploymentEnabled": {
+            "*": false,
+            "main": true
+        }
+    },
+
+    "rewrites": [
+        { "source": "/(.*)", "destination": "/index.html" }
+    ]
 }
