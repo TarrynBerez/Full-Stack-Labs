@@ -5,7 +5,7 @@ import type { Department } from "@shared/types/Department"
 import type { Organization } from "@shared/types/Organization"
 
 import * as organizationService from "../Services/organizationService"
-import { useAuth } from "@clerk/react";
+import { useAuth } from "@clerk/clerk-react";
 
 
 export function useFormInput() { 
