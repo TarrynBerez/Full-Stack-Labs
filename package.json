@@ -24,6 +24,8 @@
     "apps/*"
   ],
   "dependencies": {
+    "@clerk/express": "^2.0.8",
+    "@clerk/react": "^6.1.4",
     "dotenv": "^17.3.1"
   },
   "devDependencies": {

@@ -1,6 +1,7 @@
 // Components
 import OrganizationList from "../Components/Organization/Organization"
 import OrganizationForm from "../Components/OrganizationForm/OrganizationForm"
+import { Show} from '@clerk/react'
 
 // Hooks
 import { useFormInput } from "../Hooks/departmentHook";
@@ -11,7 +12,9 @@ function OrganizationPage() {
     
     return(
     <>
-        <OrganizationForm saveOrganization={saveOrganization}/>
+        <Show when="signed-in"> 
+            <OrganizationForm saveOrganization={saveOrganization}/>
+        </Show>
         <OrganizationList organizations={organizations}/>
     </>
    );
