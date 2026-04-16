@@ -1,6 +1,6 @@
 import "./Header.css"
 import Logo from "../../assets/Pixell-River-Logo.svg"
-import { SignedIn, SignedOut, SignInButton, SignUpButton, UserButton } from "@clerk/clerk-react";
+import { OrganizationSwitcher, SignedIn, SignedOut, SignInButton, SignUpButton, UserButton } from "@clerk/clerk-react";
 
 function Header() {
     
@@ -8,6 +8,7 @@ function Header() {
     <header>
         <img src={Logo} alt="Pixell River Logo" id="Pixell-River-Logo"/> <h1 id="Title">Pixell River Employee Directory</h1>
 
+        <OrganizationSwitcher />
         <SignedOut>
             <SignInButton />
             <SignUpButton />
